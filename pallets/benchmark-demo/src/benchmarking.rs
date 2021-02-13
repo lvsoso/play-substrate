@@ -9,10 +9,12 @@ use frame_system::RawOrigin;
 use sp_std::prelude::*;
 
 benchmarks!{
+	// 定义初始化变量
 	_ {
 		let b in 1 .. 1000 => ();
 	}
 
+	// 如果测试函数不是do_something,则下划线处需要使用函数名
 	do_something {
 		let b in ...;
 		let caller = account("caller", 0, 0);
@@ -29,6 +31,7 @@ mod tests {
 	use crate::mock::{new_test_ext, Test};
 	use frame_support::assert_ok;
 
+	// 对 benchmarks 进行测试
 	#[test]
 	fn test_benchmarks() {
 		new_test_ext().execute_with(|| {
